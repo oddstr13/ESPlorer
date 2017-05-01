@@ -589,12 +589,12 @@ public class ESPlorer extends javax.swing.JFrame {
         MenuItemHelpAbout = new javax.swing.JMenuItem();
 
         ContextMenuTerminal.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                ContextMenuTerminalPopupMenuWillBecomeVisible(evt);
             }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
             }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                ContextMenuTerminalPopupMenuWillBecomeVisible(evt);
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
         });
 
@@ -901,12 +901,12 @@ public class ESPlorer extends javax.swing.JFrame {
         );
 
         ContextMenuESPFileLUA.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                ContextMenuESPFileLUAPopupMenuWillBecomeVisible(evt);
             }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
             }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                ContextMenuESPFileLUAPopupMenuWillBecomeVisible(evt);
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
         });
 
@@ -1341,11 +1341,11 @@ public class ESPlorer extends javax.swing.JFrame {
             }
         });
         TextEditor.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-                TextEditorCaretPositionChanged(evt);
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 TextEditorInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                TextEditorCaretPositionChanged(evt);
             }
         });
         TextEditor.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1503,7 +1503,6 @@ public class ESPlorer extends javax.swing.JFrame {
         FilePathLabel.setText("jLabel1");
 
         ProgressBar.setToolTipText("");
-        ProgressBar.setOpaque(true);
         ProgressBar.setStringPainted(true);
 
         LeftMainButtons.setOpaque(true);
@@ -1763,7 +1762,7 @@ public class ESPlorer extends javax.swing.JFrame {
                 .addGroup(CommandsNodeMCULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdListFiles, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmdTimerStop, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TimerNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                    .addComponent(TimerNumber))
                 .addContainerGap())
         );
 
@@ -3274,10 +3273,10 @@ public class ESPlorer extends javax.swing.JFrame {
         jLayeredPane3.setLayout(jLayeredPane3Layout);
         jLayeredPane3Layout.setHorizontalGroup(
             jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(UseCustomPortName, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+            .addComponent(UseCustomPortName, javax.swing.GroupLayout.PREFERRED_SIZE, 161, Short.MAX_VALUE)
             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(CustomPortName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(AutodetectFirmware, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(AutodetectFirmware, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
             .addComponent(CommandEcho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jLayeredPane3Layout.setVerticalGroup(
@@ -3309,7 +3308,7 @@ public class ESPlorer extends javax.swing.JFrame {
                 .addGroup(NodeMCUSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(OptionsOther)
                     .addComponent(OptionsFirmware)
-                    .addComponent(OptionsFileSendMode, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(OptionsFileSendMode))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(NodeMCUSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLayeredPane2)
@@ -4226,7 +4225,7 @@ public class ESPlorer extends javax.swing.JFrame {
                     .addGroup(TCPclientBottomPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(cmdCIPSEND, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cmdCIPSENDinteractive, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cmdSetCIPCLOSE, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+                        .addComponent(cmdSetCIPCLOSE, javax.swing.GroupLayout.PREFERRED_SIZE, 230, Short.MAX_VALUE))
                     .addComponent(cmdGetCIPSTART, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         TCPclientBottomPaneLayout.setVerticalGroup(
@@ -5339,7 +5338,7 @@ public class ESPlorer extends javax.swing.JFrame {
                     .addComponent(AppSKey))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmdMacGetDevAddr, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         ABPPaneLayout.setVerticalGroup(
             ABPPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -5824,7 +5823,7 @@ public class ESPlorer extends javax.swing.JFrame {
                                     .addGroup(LEDPanelLayout.createSequentialGroup()
                                         .addComponent(LF)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(EditorOnlyCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
+                                        .addComponent(EditorOnlyCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                                     .addGroup(LEDPanelLayout.createSequentialGroup()
                                         .addComponent(CR)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -6007,7 +6006,6 @@ public class ESPlorer extends javax.swing.JFrame {
         Log.setBorder(Terminal.getBorder());
         Log.setComponentPopupMenu(ContextMenuLog);
         Log.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Log.setMargin(new java.awt.Insets(0, 0, 0, 0));
         Log.setName("Log"); // NOI18N
         Log.setNextFocusableComponent(SendCommand);
         Log.setSelectionColor(new java.awt.Color(204, 0, 0));
