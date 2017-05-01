@@ -3058,7 +3058,7 @@ public class ESPlorer extends javax.swing.JFrame {
         LineDelay.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         LineDelay.setMajorTickSpacing(500);
         LineDelay.setMaximum(1000);
-        LineDelay.setMinorTickSpacing(100);
+        LineDelay.setMinorTickSpacing(50);
         LineDelay.setPaintLabels(true);
         LineDelay.setPaintTicks(true);
         LineDelay.setSnapToTicks(true);
@@ -13680,8 +13680,6 @@ public class ESPlorer extends javax.swing.JFrame {
     private void DisablingNotImplemented() {
         if (OptionMicroPython.isSelected()) {
             /* temporay disabling not emplemented functions */
-            LineDelay.setValue(0); // micro python very fast :)
-            DumbMode.setSelected(true);
 
             MenuItemViewLeftExtra.setSelected(false);
             //MenuItemViewFileManager.setSelected(false);
