@@ -10,6 +10,60 @@
 <project name="ESPlorer" default="default" basedir=".">
     <description>Builds, tests, and runs the project ESPlorer.</description>
     <import file="nbproject/build-impl.xml"/>
+
+    <target name="git-variables" >
+        <exec executable="git" outputproperty="git.tagstring">
+            <arg value="describe"/>
+            <arg value="--tags"/>
+            <arg value="--long"/>
+        </exec>
+
+        <exec executable="git" outputproperty="git.branch">
+            <arg value="rev-parse"/>
+            <arg value="--abbrev-ref"/>
+            <arg value="HEAD"/>
+        </exec>
+
+        <exec executable="git" outputproperty="git.revision">
+            <arg value="rev-parse"/>
+            <arg value="--short"/>
+            <arg value="HEAD"/>
+        </exec>
+
+        <exec executable="git" outputproperty="git.fullrevision">
+            <arg value="rev-parse"/>
+            <arg value="HEAD"/>
+        </exec>
+
+        <exec executable="git">
+            <arg value="update-index"/>
+            <arg value="-q"/>
+            <arg value="--refresh"/>
+        </exec>
+        <exec executable="git" resultproperty="git.hasChanges">
+            <arg value="diff-index"/>
+            <arg value="--quiet"/>
+            <arg value="HEAD"/>
+        </exec>
+
+        <condition property="git.tag" value="" else="${git.tagstring}">
+            <contains string="${git.tagstring}" substring="fatal:"/>
+        </condition>
+
+        <condition property="git.version" value="${git.branch}/${git.revision}" else="${git.tagstring}">
+            <contains string="${git.tagstring}" substring="fatal:"/>
+        </condition>
+    </target>
+
+    <target name="-pre-init" depends="git-variables">
+        <echo>DEBUG: ${ESPlorer-impl.tmp.manifest.file} ${git.version}</echo>
+
+        <manifest encoding="UTF-8" file="manifest.mf" mode="update">
+           <attribute name="Implementation-Version" value="${git.version}" />
+        </manifest>
+
+     </target>
+
     <!--
 
     There exist several targets which are by default empty and which can be 
